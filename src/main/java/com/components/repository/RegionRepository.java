@@ -13,4 +13,6 @@ public interface RegionRepository extends JpaRepository<REGION, Long> {
 	@Query(value="SELECT  p. region_id,p. region,p.Provincia from REGION p INNER JOIN RIG R on p.id=r.id  where r.nombre  = :pais",nativeQuery = true) 
     public List<String> findByCountry(@Param("pais") String pais);
 	
+	@Query(value="SELECT  p. region_id,p. region,p.Provincia from REGION p   where p.region  like %:region%",nativeQuery = true) 
+    public List<String> findByName(@Param("region") String region);
 }

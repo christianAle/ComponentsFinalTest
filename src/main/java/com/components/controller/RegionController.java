@@ -33,7 +33,12 @@ public class RegionController {
 	public  List<String> findByCountry(@PathVariable String pais) {
 		return repository.findByCountry(pais);
 	}
-
+    
+	@GetMapping(path = { "/n/{region}" })
+	public List<String> findByProvincia(@PathVariable String region) {
+		return repository.findByName(region);
+	}
+	
 	@PostMapping
 	public REGION create(@RequestBody REGION rig) {
 		return repository.save(rig);
